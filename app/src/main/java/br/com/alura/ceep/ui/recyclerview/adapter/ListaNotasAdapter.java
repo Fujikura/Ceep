@@ -16,8 +16,8 @@ import br.com.alura.ceep.ui.recyclerview.viewholder.NotaViewHolder;
 
 public class ListaNotasAdapter extends RecyclerView.Adapter<NotaViewHolder> {
 
-    private List<Nota> notas;
-    private Context contexto;
+    private final List<Nota> notas;
+    private final Context contexto;
 
     public ListaNotasAdapter(Context contexto, List<Nota> notas) {
         this.notas = notas;
@@ -27,9 +27,13 @@ public class ListaNotasAdapter extends RecyclerView.Adapter<NotaViewHolder> {
     @NonNull
     @Override
     public NotaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View viewCriada = LayoutInflater.from(contexto)
-                .inflate(R.layout.item_nota, parent, false);
+        View viewCriada = criaView(parent);
         return new NotaViewHolder(viewCriada);
+    }
+
+    private View criaView(@NonNull ViewGroup parent) {
+        return LayoutInflater.from(contexto)
+                    .inflate(R.layout.item_nota, parent, false);
     }
 
     @Override

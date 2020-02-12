@@ -23,8 +23,11 @@ public class NotaViewHolder extends RecyclerView.ViewHolder {
 
 
     public void vincula(Nota nota){
+        preencheCampos(nota);
+    }
+
+    private void preencheCampos(Nota nota) {
         titulo.setText(nota.getTitulo());
         descricao.setText(nota.getDescricao());
-
     }
 }
