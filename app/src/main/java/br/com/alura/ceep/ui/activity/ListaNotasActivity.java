@@ -1,6 +1,9 @@
 package br.com.alura.ceep.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,6 +25,26 @@ public class ListaNotasActivity extends AppCompatActivity {
 
         List<Nota> notas = notasDeExemplo();
         configuraRecyclerView(notas);
+
+
+        TextView insereNota = findViewById(R.id.lista_notas_insere_nota);
+        insereNota.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iniciaFormularioNota =
+                        new Intent(ListaNotasActivity.this,
+                                FormularioNotaActivity.class);
+
+                startActivity(iniciaFormularioNota);
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        NotaDAO notaDao = new NotaDAO();
+        configuraRecyclerView(notaDao.todos());
     }
 
     private List<Nota> notasDeExemplo() {
