@@ -19,7 +19,6 @@ public class ListaNotasAdapter extends RecyclerView.Adapter<NotaViewHolder> {
 
     private final List<Nota> notas;
     private final Context contexto;
-    private int quantidadeViewHolder = 0;
 
     public ListaNotasAdapter(Context contexto, List<Nota> notas) {
         this.notas = notas;
@@ -29,10 +28,7 @@ public class ListaNotasAdapter extends RecyclerView.Adapter<NotaViewHolder> {
     @NonNull
     @Override
     public NotaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        quantidadeViewHolder++;
         View viewCriada = criaView(parent);
-        Log.i("recyclerView adapter",
-                "quantidade view holder: " + quantidadeViewHolder);
         return new NotaViewHolder(viewCriada);
     }
 
