@@ -39,7 +39,7 @@ public class ListaNotasAdapter extends RecyclerView.Adapter<NotaViewHolder> {
 
     private View criaView(@NonNull ViewGroup parent) {
         return LayoutInflater.from(contexto)
-                    .inflate(R.layout.item_nota, parent, false);
+                .inflate(R.layout.item_nota, parent, false);
     }
 
     @Override
@@ -53,13 +53,18 @@ public class ListaNotasAdapter extends RecyclerView.Adapter<NotaViewHolder> {
         return notas.size();
     }
 
-    public void adiciona(Nota nota){
+    public void adiciona(Nota nota) {
         notas.add(nota);
         notifyDataSetChanged();
     }
 
     public void altera(int posicao, Nota nota) {
-        notas.set(posicao,nota);
+        notas.set(posicao, nota);
+        notifyDataSetChanged();
+    }
+
+    public void remove(int posicao) {
+        notas.remove(posicao);
         notifyDataSetChanged();
     }
 }
