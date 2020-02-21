@@ -29,12 +29,14 @@ import static br.com.alura.ceep.ui.activity.NotaActivityConstantes.POSICAO_INVAL
 
 public class ListaNotasActivity extends AppCompatActivity {
 
+    public static final String TITULO_APPBAR = "Notas";
     private ListaNotasAdapter adapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_lista_notas);
+        setTitle(TITULO_APPBAR);
 
         List<Nota> todasNotas = pegaTodasNotas();
         configuraRecyclerView(todasNotas);
@@ -123,7 +125,7 @@ public class ListaNotasActivity extends AppCompatActivity {
     }
 
     private boolean temNota(@Nullable Intent data) {
-        return data.hasExtra(CHAVE_NOTA);
+        return data != null && data.hasExtra(CHAVE_NOTA);
     }
 
     private boolean resultadoOk(int resultCode) {
